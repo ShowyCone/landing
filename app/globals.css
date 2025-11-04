@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -23,4 +23,36 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Estilos específicos para el swiper 3D con z-index correcto */
+.swiper-3d-7 {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  overflow: visible;
+  position: relative;
+}
+
+.swiper-3d-7 .swiper-wrapper {
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.swiper-3d-7 .swiper-slide {
+  position: relative;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  z-index: 1 !important;
+}
+
+/* La slide del centro siempre debe estar al frente */
+.swiper-3d-7 .swiper-slide-center {
+  z-index: 999 !important;
+}
+
+/* Asegurar que las cards tengan posicionamiento correcto */
+.swiper-3d-7 .tf-card-box {
+  position: relative;
+  z-index: inherit;
+  pointer-events: auto;
 }

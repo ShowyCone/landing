@@ -35,6 +35,57 @@ const HeroSection = () => {
             scale: 0.9,
             slideShadows: false,
           },
+          on: {
+            slideChange: function (this: any) {
+              // Resetear todos los z-index primero
+              const allSlides = this.slides
+              allSlides.forEach((slide: any) => {
+                const slideElement = slide as HTMLElement
+                slideElement.style.zIndex = '1'
+                slideElement.classList.remove('swiper-slide-center')
+              })
+
+              // Asignar z-index alto solo a la slide activa (la del centro)
+              const activeSlide = allSlides[this.activeIndex]
+              if (activeSlide) {
+                activeSlide.style.zIndex = '999'
+                activeSlide.classList.add('swiper-slide-center')
+              }
+            },
+            slideChangeTransitionStart: function (this: any) {
+              // También actualizar durante la transición
+              const allSlides = this.slides
+              allSlides.forEach((slide: any) => {
+                const slideElement = slide as HTMLElement
+                slideElement.style.zIndex = '1'
+                slideElement.classList.remove('swiper-slide-center')
+              })
+
+              const activeSlide = allSlides[this.activeIndex]
+              if (activeSlide) {
+                activeSlide.style.zIndex = '999'
+                activeSlide.classList.add('swiper-slide-center')
+              }
+            },
+            init: function (this: any) {
+              // Configurar z-index inicial después de que swiper se inicialice
+              setTimeout(() => {
+                const allSlides = this.slides
+                allSlides.forEach((slide: any) => {
+                  const slideElement = slide as HTMLElement
+                  slideElement.style.zIndex = '1'
+                  slideElement.classList.remove('swiper-slide-center')
+                })
+
+                // Slide activa inicial
+                const activeSlide = allSlides[this.activeIndex]
+                if (activeSlide) {
+                  activeSlide.style.zIndex = '999'
+                  activeSlide.classList.add('swiper-slide-center')
+                }
+              }, 50)
+            },
+          },
           navigation: {
             nextEl: '.next-3d',
             prevEl: '.prev-3d',
@@ -43,7 +94,9 @@ const HeroSection = () => {
             el: '.swiper-pagination',
             clickable: true,
             renderBullet: function (index: number, className: string) {
-              return '<span class="' + className + '">' + (index + 1) + '</span>'
+              return (
+                '<span class="' + className + '">' + (index + 1) + '</span>'
+              )
             },
           },
           breakpoints: {
@@ -228,9 +281,15 @@ const HeroSection = () => {
 
             {/* 3D Swiper */}
             <div className='relative'>
-              <div className='swiper swiper-3d-7'>
+              <div
+                className='swiper swiper-3d-7'
+                style={{
+                  transformStyle: 'preserve-3d',
+                  perspective: '1200px',
+                }}
+              >
                 <div className='swiper-wrapper'>
-                  {nftItems.map((item) => (
+                  {nftItems.map((item, index) => (
                     <div key={item.id} className='swiper-slide'>
                       <div className='tf-card-box'>
                         <div className='card-media'>
@@ -279,7 +338,8 @@ const HeroSection = () => {
                             <a href='nft-detail-2.html'>{item.title}</a>
                           </h5>
                           <h6 className='price gem'>
-                            <i className='icon-gem'></i>{item.price}
+                            <i className='icon-gem'></i>
+                            {item.price}
                           </h6>
                         </div>
                       </div>

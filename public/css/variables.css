@@ -1,0 +1,113 @@
+/**
+ * Variables CSS para la paleta de colores del sitio
+ * Cambia estos valores para personalizar toda la página
+ */
+:root {
+  /* ========================================
+     COLORES PRINCIPALES
+     ======================================== */
+
+  /* Color primario - Verde lima característico */
+  --primary-color: #ddf247;
+  --primary-color-variant: #e2fe26;
+  --primary-color-rgb: 221, 242, 71;
+
+  /* Colores de fondo */
+  --bg-dark-primary: #161616;
+  --bg-dark-secondary: #232323;
+  --bg-dark-tertiary: #111;
+  --bg-white: #fff;
+
+  /* Colores de texto */
+  --text-white: #fff;
+  --text-dark: #161616;
+  --text-gray: #7a798a;
+  --text-gray-light: #8a8aa0;
+  --text-error: #ff0000;
+
+  /* Colores con transparencia */
+  --white-transparent-53: rgba(255, 255, 255, 0.53);
+  --white-transparent-50: rgba(255, 255, 255, 0.5);
+  --white-transparent-40: rgba(255, 255, 255, 0.4);
+  --white-transparent-12: rgba(255, 255, 255, 0.12);
+  --white-transparent-10: rgba(255, 255, 255, 0.1);
+  --white-transparent-08: rgba(255, 255, 255, 0.08);
+  --white-transparent-05: rgba(255, 255, 255, 0.05);
+  --black-solid: rgba(22, 22, 22, 1);
+  --black-transparent-10: rgba(22, 22, 22, 0.1);
+  --black-transparent-08: rgba(22, 22, 22, 0.08);
+  --black-transparent-05: rgba(22, 22, 22, 0.05);
+  --primary-transparent-30: rgba(221, 242, 71, 0.3);
+
+  /* Colores de borde */
+  --border-light: #e0e0e0;
+  --border-dark: #343444;
+  --border-white-transparent: rgba(255, 255, 255, 0.08);
+  --border-dark-transparent: rgba(22, 22, 22, 0.08);
+
+  /* Colores de gradiente */
+  --gradient-rainbow: linear-gradient(to right, #e250e5, #4b50e6, #e250e5);
+
+  /* Colores de redes sociales */
+  --social-facebook: #1877f2;
+  --social-twitter: #1d9bf0;
+  --social-discord: #5865f2;
+  --social-youtube: #cc0000;
+  --social-linkedin: #0a66c2;
+  --social-instagram: #c13584;
+  --social-tiktok: #000000;
+
+  /* Colores adicionales */
+  --color-black: #000;
+  --color-pure-white: #ffffff;
+  --color-button-secondary: #dee8e8;
+
+  /* ========================================
+     COLORES SEMÁNTICOS
+     ======================================== */
+
+  /* Estados */
+  --color-hover: var(--primary-color);
+  --color-active: var(--primary-color);
+  --color-focus: var(--primary-color);
+
+  /* Botones */
+  --btn-primary-bg: var(--primary-color);
+  --btn-primary-text: var(--text-dark);
+  --btn-primary-hover-bg: var(--text-dark);
+  --btn-primary-hover-text: var(--primary-color);
+
+  --btn-secondary-bg: var(--white-transparent-05);
+  --btn-secondary-text: #dee8e8;
+  --btn-secondary-hover-bg: var(--primary-color);
+  --btn-secondary-hover-text: var(--text-dark);
+
+  /* Formularios */
+  --input-bg: var(--bg-dark-primary);
+  --input-border: var(--white-transparent-12);
+  --input-text: var(--text-gray-light);
+  --input-placeholder: var(--white-transparent-53);
+
+  /* ========================================
+     ESQUEMAS DE COLOR ALTERNATIVOS
+     ======================================== */
+
+  /* Para tema claro (cuando se usa .background-white) */
+  --alt-bg: var(--bg-white);
+  --alt-text: var(--text-dark);
+  --alt-border: var(--border-dark-transparent);
+
+  /* ========================================
+     ESTILOS PERSONALIZADOS PARA COMPONENTES
+     ======================================== */
+
+  /* FeaturedItems - Colores personalizados */
+  --featured-card-bg: #1e1e1e;
+  --featured-text-primary: var(--text-white);
+  --featured-text-accent: var(--primary-color);
+  --featured-text-muted: rgba(255, 255, 255, 0.6);
+  --featured-text-light: rgba(255, 255, 255, 0.3);
+  --featured-badge-bg: var(--primary-color);
+  --featured-badge-text: var(--bg-dark-primary);
+  --featured-divider: rgba(255, 255, 255, 0.1);
+}

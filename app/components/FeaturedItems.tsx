@@ -15,7 +15,10 @@ const FeaturedItems = () => {
           slidesPerView: 1,
           observer: true,
           observeParents: true,
-          spaceBetween: 30,
+          spaceBetween: 24,
+          centeredSlides: false,
+          watchOverflow: true,
+          allowTouchMove: true,
           navigation: {
             clickable: true,
             nextEl: '.slider-next',
@@ -26,17 +29,21 @@ const FeaturedItems = () => {
             clickable: true,
           },
           breakpoints: {
+            640: {
+              slidesPerView: 1.1,
+              spaceBetween: 20,
+            },
             768: {
               slidesPerView: 2,
-              spaceBetween: 30,
+              spaceBetween: 24,
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 30,
+              spaceBetween: 28,
             },
             1300: {
               slidesPerView: 4,
-              spaceBetween: 30,
+              spaceBetween: 32,
             },
           },
         })
@@ -142,87 +149,114 @@ const FeaturedItems = () => {
             </div>
           </div>
           <div className='col-md-12'>
-            <div className='featured pt-10 swiper-container carousel'>
-              <div className='swiper-wrapper'>
-                {featuredItems.map((item) => (
-                  <div key={item.id} className='swiper-slide'>
-                    <div className='tf-card-box style-1'>
-                      <div className='card-media'>
-                        <Link href={`/nft/${item.id}`}>
+            <div className='relative'>
+              <div className='featured pt-10 swiper-container carousel overflow-hidden mx-20 px-4 pb-40'>
+                <div className='swiper-wrapper'>
+                  {featuredItems.map((item, index) => (
+                    <div key={item.id} className='swiper-slide'>
+                      <div className='featured-card group'>
+                        <div className='featured-card-image'>
                           <Image
                             src={item.image}
                             alt={item.title}
-                            width={300}
-                            height={300}
-                            className='w-full h-auto'
+                            fill
+                            className='featured-card-image img'
+                            sizes='(max-width: 640px) 100vw, 33vw'
+                            priority={false}
+                            unoptimized
                           />
-                        </Link>
-                        <span className='wishlist-button icon-heart'></span>
 
-                        <div className='featured-countdown'>
-                          <span
-                            className='js-countdown'
-                            data-timer='7500'
-                            data-labels='d,h,m,s'
-                          ></span>
-                        </div>
-
-                        <div className='button-place-bid'>
                           <button
-                            className='tf-button'
-                            data-toggle='modal'
-                            data-target='#popup_bid'
+                            className='featured-favorite-btn'
+                            aria-label='Add to favorites'
                           >
-                            <span>Place Bid</span>
+                            <i className='icon-heart'></i>
                           </button>
-                        </div>
-                      </div>
 
-                      <h5 className='name'>
-                        <Link href={`/nft/${item.id}`}>{item.title}</Link>
-                      </h5>
+                          <div className='featured-countdown'>
+                            <span
+                              className='js-countdown'
+                              data-timer='7500'
+                              data-labels='d,h,m,s'
+                            ></span>
+                          </div>
 
-                      <div className='author flex items-center'>
-                        <div className='avatar'>
-                          <Image
-                            src={item.avatar}
-                            alt={item.creator}
-                            width={40}
-                            height={40}
-                            className='rounded-full'
-                          />
-                        </div>
-                        <div className='info'>
-                          <span>Created by:</span>
-                          <h6>
-                            <Link
-                              href={`/author/${item.creator
-                                .toLowerCase()
-                                .replace(' ', '-')}`}
+                          <div className='featured-bid-btn'>
+                            <button
+                              className='tf-button'
+                              data-toggle='modal'
+                              data-target='#popup_bid'
                             >
-                              {item.creator}
-                            </Link>
-                          </h6>
+                              <span>Place Bid</span>
+                            </button>
+                          </div>
                         </div>
-                      </div>
 
-                      <div className='divider'></div>
+                        <div className='px-1 flex flex-col grow'>
+                          <div className='relative group/title mb-3'>
+                            <h5 className='featured-title px-1'>
+                              <Link href={`/nft/${item.id}`}>{item.title}</Link>
+                            </h5>
+                            <div className='featured-tooltip'>
+                              {item.title}
+                              <div className='featured-tooltip-arrow' />
+                            </div>
+                          </div>
 
-                      <div className='meta-info flex items-center justify-between'>
-                        <span className='text-bid'>Current Bid</span>
-                        <h6 className='price gem'>
-                          <i className='icon-gem'></i>
-                          {item.price}
-                        </h6>
+                          <div className='px-1 mb-3'>
+                            <div className='flex items-center justify-between'>
+                              <span className='featured-price'>
+                                <i className='icon-gem featured-price-icon'></i>
+                                {item.price}
+                              </span>
+                              <span className='featured-badge'>Featured</span>
+                            </div>
+                          </div>
+
+                          <div className='grow px-1 mb-3'>
+                            <div className='relative group/desc w-full'>
+                              <p className='featured-description'>
+                                Digital collectible item by {item.creator}
+                              </p>
+                              <div className='featured-tooltip'>
+                                Digital collectible item by {item.creator}
+                                <div className='featured-tooltip-arrow' />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className='featured-divider'></div>
+
+                          <div className='px-1 flex justify-between items-center'>
+                            <span className='featured-creator-label'>
+                              Created by:
+                            </span>
+                            <div className='relative group/author flex-1 min-w-0 ml-2'>
+                              <span className='featured-creator-name block'>
+                                <Link
+                                  href={`/author/${item.creator
+                                    .toLowerCase()
+                                    .replace(' ', '-')}`}
+                                >
+                                  {item.creator}
+                                </Link>
+                              </span>
+                              <div className='featured-tooltip featured-tooltip-right'>
+                                {item.creator}
+                                <div className='featured-tooltip-arrow featured-tooltip-arrow-right' />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
 
-              <div className='swiper-pagination'></div>
-              <div className='slider-next swiper-button-next'></div>
-              <div className='slider-prev swiper-button-prev'></div>
+                <div className='swiper-pagination'></div>
+              </div>
+              <div className='slider-next swiper-button-next absolute bottom-0 -right-4 z-10'></div>
+              <div className='slider-prev swiper-button-prev absolute bottom-0 -left-4 z-10'></div>
             </div>
           </div>
         </div>
