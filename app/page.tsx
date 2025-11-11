@@ -12,7 +12,7 @@ import Footer from './components/Footer'
 export default function Home() {
   return (
     <div id='wrapper'>
-      <div id='page' className='pt-40 home-1'>
+      <div id='page' className='home-1'>
         <Header />
 
         <HeroSection />

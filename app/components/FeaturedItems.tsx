@@ -72,34 +72,34 @@ const FeaturedItems = () => {
     {
       id: 1,
       image: '/images/box-item/card-item-01.jpg',
-      title: 'Dayco serpentine belt',
-      creator: 'Kathryn Murphy',
+      title: 'Post TGE Business Advisory',
+      creator: 'RWA Inc',
       avatar: '/images/avatar/avatar-box-01.jpg',
-      price: '0,34',
+      price: '2000 - 5000',
     },
     {
       id: 2,
       image: '/images/box-item/card-item-02.jpg',
-      title: 'Dayco serpentine belt',
-      creator: 'Cody Fisher',
+      title: '3rd Party Platform Development',
+      creator: 'RWA Inc',
       avatar: '/images/avatar/avatar-box-02.jpg',
-      price: '0,34',
+      price: '8000 - 20000',
     },
     {
       id: 3,
       image: '/images/box-item/card-item-03.jpg',
-      title: 'Dayco serpentine belt',
-      creator: 'Cody Fisher',
+      title: 'Pitchdeck + Investor Narrative',
+      creator: 'RWA Inc',
       avatar: '/images/avatar/avatar-box-03.jpg',
-      price: '0,34',
+      price: '8000 - 20000',
     },
     {
       id: 4,
       image: '/images/box-item/card-item-04.jpg',
-      title: 'Dayco serpentine belt',
-      creator: 'Cody Fisher',
+      title: 'Hosted Platform Services',
+      creator: 'RWA Inc',
       avatar: '/images/avatar/avatar-box-04.jpg',
-      price: '0,34',
+      price: '1000 - 1500',
     },
     // Duplicate items for carousel effect
     {
@@ -206,7 +206,9 @@ const FeaturedItems = () => {
                           <div className='px-1 mb-3'>
                             <div className='flex items-center justify-between'>
                               <span className='featured-price'>
-                                <i className='icon-gem featured-price-icon'></i>
+                                <i className='icon-cash featured-price-icon'>
+                                  $
+                                </i>
                                 {item.price}
                               </span>
                               <span className='featured-badge'>Featured</span>

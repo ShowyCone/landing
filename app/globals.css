@@ -42,12 +42,17 @@ body {
   position: relative;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  z-index: 1 !important;
+  /* Removemos el !important para permitir que JavaScript controle el z-index */
+  z-index: 1;
+  /* Asegurar que las transformaciones 3D no interfieran con el z-index */
+  transform-origin: center center;
 }
 
 /* La slide del centro siempre debe estar al frente */
 .swiper-3d-7 .swiper-slide-center {
-  z-index: 999 !important;
+  z-index: 1000 !important;
+  /* Asegurar que la slide central sea completamente visible */
+  transform-origin: center center;
 }
 
 /* Asegurar que las cards tengan posicionamiento correcto */
@@ -55,4 +60,36 @@ body {
   position: relative;
   z-index: inherit;
   pointer-events: auto;
+  /* Prevenir que las transformaciones 3D causen problemas de layering */
+  transform-style: flat;
+}
+
+/* Mejorar el layering durante las transiciones */
+.swiper-3d-7 .swiper-slide-active {
+  z-index: 1000 !important;
+}
+
+/* Asegurar que las slides anteriores y siguientes tengan z-index apropiado */
+.swiper-3d-7 .swiper-slide-prev {
+  z-index: 90 !important;
+}
+
+.swiper-3d-7 .swiper-slide-next {
+  z-index: 90 !important;
+}
+
+/* Forzar el contexto de stacking correcto para todas las slides */
+.swiper-3d-7 .swiper-slide {
+  isolation: isolate;
+}
+
+/* Asegurar que la slide activa esté siempre al frente durante transiciones */
+.swiper-3d-7 .swiper-slide-active,
+.swiper-3d-7 .swiper-slide-duplicate-active {
+  z-index: 1000 !important;
+}
+
+/* Prevenir que las transformaciones 3D interfieran con el z-index */
+.swiper-3d-7 .swiper-slide * {
+  transform-style: flat !important;
 }
